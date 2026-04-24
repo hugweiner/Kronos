@@ -43,7 +43,8 @@ tokenizer = KronosTokenizer.from_pretrained('/home/csc/huggingface/Kronos-Tokeni
 model = Kronos.from_pretrained("/home/csc/huggingface/Kronos-base/")
 
 # 2. Instantiate Predictor
-predictor = KronosPredictor(model, tokenizer, device="cuda:0", max_context=512)
+# Note: increased max_context from 512 to 1024 to allow longer lookback windows
+predictor = KronosPredictor(model, tokenizer, device="cuda:0", max_context=1024)
 
 # 3. Prepare Data
 df = pd.read_csv("./data/XSHG_5min_600977.csv")
